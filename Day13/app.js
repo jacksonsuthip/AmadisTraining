@@ -31,7 +31,14 @@ Calculator(1,2,4);
 let Calculator1 = {
     Add(a,b){
         console.log(a+b);
+    },
+    sub(a,b){
+        console.log(a-b);
     }
 }
+
 Calculator1.Add(5,6);
+Calculator1.sub(5,6);
+
+
 
