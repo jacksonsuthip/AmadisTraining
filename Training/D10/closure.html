@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <script>
+        function printName(name) {
+
+            setTimeout(function delayFn() {
+                console.log(name);
+            }, 2000);
+            name = "XYZ";
+        }
+
+        printName("Rasesh");
+
+        // JS - xxx - Rasesh
+
+        // Closure - function closed over a variable 
+        // delayFn closed over variable "name"
+
+        // var empName = "Greeshma";
+        // function showEmpName() {
+        //     console.log(empName);
+        // }
+        // empName = "Anto";
+        // showEmpName();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 9</title>
+        <style>
+            body{
+                background-color: #e5a8e7;
+            }
+            header {
+                text-align: center;
+                background-color: #e71def;
+                color: #ffffff;
+                padding: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+             div{
+                padding-left: 15%;
+                padding-bottom: 7px;
+                padding-top: 7px;
+            }
+            fieldset{
+                margin: 100px;
+                background-color: #aae58f;
+                width: 40%;
+                height: 100px;
+                border-radius: 70px;
+                border: 3px solid;
+                border-color: black;
+            }
+            legend{
+                text-transform: uppercase;
+                font-weight: bold;
+                background-color: #6868d8;
+                color: white;
+                border-radius: 7px;
+                padding: 3px;
+            }
+            .left, .right{
+                float: left;
+                 /* left: 20px;
+                top: 75px;  */
+                width: 45%;
+            }
+            button{
+                color: white;
+                background-color: #f71ed3;
+                padding: 8px;
+                border: 2px solid #f71ed3;
+                text-align: center;
+                border-radius: 10px;
+                font-size: 15px;
+                transition: all 0.3s;
+                margin: 5px;
+                font-weight: bold;
+            }
+            span{
+                font-weight: bold;
+            }
+            .btn1:hover{
+                border: 2px solid #f71ed3;
+                background-color: transparent;
+	            color: black;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Stop Watch And Calculator</header>
+        <div class="left" style="padding: 20px; width:528px; ">
+            <p></p>
+            <fieldset>
+                <legend>Stop Watch</legend>
+                <table border="0" width="100%" cellspacing="0" cellpadding="0">
+					<tr>
+						<td align="center" colspan="3">
+                            <span id="min">00 </span><b>:</b>
+                            <span id="seconds">00</span><b>.</b><span id="tens">00</span>
+                        </td>
+					</tr>
+					<tr>
+						<td width="44%">&nbsp;</td>
+						<td width="12%">&nbsp;</td>
+						<td width="44%">&nbsp;</td>
+					</tr>
+                    <tr>
+						<td width="44%" align="right"><button id="btnStart" class="btn1">Start</button></td>
+						<td width="12%" align="center"><button id="btnStop" class="btn1">Stop</button></td>
+						<td width="44%" align="left"><button id="btnReset" class="btn1">Reset</button></td>
+					</tr>
+				</table>
+            </fieldset>
+        </div>
+    <div class="right" style="padding: 20px; margin: 10px; width:462px;height:268px">
+        <p></p>
+    <table cellspacing="0" cellpadding="0" width="594">
+        <tr>
+            <td align="center"><input type="text" id="val" /></td>
+		</tr>    
+        <tr>
+            <td align="center"><input type="text" id="TotVal" /></td>
+		</tr>    
+				<tr>
+					<td align="center">
+						<button id="nine0" class="btn1" onclick="numberInput(9)">9</button>
+						<button id="nine" class="btn1" onclick="numberInput(8)">8</button>
+						<button id="nine1" class="btn1" onclick="numberInput(7)">7</button>
+						<button id="nine" class="btn1" onclick="numberInput('+')">+</button>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<button id="nine" class="btn1" onclick="numberInput(6)">6</button>
+						<button id="nine" class="btn1" onclick="numberInput(5)">5</button>
+						<button id="nine" class="btn1" onclick="numberInput(4)">4</button>
+						<button id="nine" class="btn1" onclick="numberInput('-')">-</button>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<button id="nine" class="btn1" onclick="numberInput(3)">3</button>
+						<button id="nine" class="btn1" onclick="numberInput(2)">2</button>
+						<button id="nine" class="btn1" onclick="numberInput(1)">1</button>
+						<button id="nine" class="btn1" onclick="numberInput('*')">*</button>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button id="nine" class="btn1" onclick="numberInput(0)">0</button>
+						<button id="nine" class="btn1" onclick="TotalValue()">=</button>
+						<button id="nine" class="btn1" onclick="numberInput('/')">/</button>
+					</td>
+				</tr>
+		</tr>    
+    </table>
+    </div>
+    <script>
+    var inputVal = "";
+    function numberInput(val) {
+        inputVal += val;
+        document.getElementById("val").value = inputVal;
+    }
+
+    function TotalValue() {
+        var result = eval(inputVal);
+        document.getElementById("TotVal").value = result;
+    }
+
+
+    window.onload = function(){
+        var min = 00;
+        var sec = 00;
+        var ten = 00;
+        var appMin   = document.getElementById("min");
+        var appSec   = document.getElementById("seconds");
+        var appten   = document.getElementById("tens");
+        var btnStart = document.getElementById("btnStart");
+        var btnStop  = document.getElementById("btnStop");
+        var btnReset = document.getElementById("btnReset");
+        var intervals;
+        
+        btnStart.onclick = function (){
+            intervals = setInterval(startTimer,10);
+        }
+
+        btnStop.onclick = function (){
+        clearInterval(intervals);
+        }
+
+        btnReset.onclick = function (){
+            clearInterval(intervals);
+            min = "00";
+            appMin.innerHTML = min;
+            sec = "00";
+            appSec.innerHTML = sec;
+            ten = "00";
+            appten.innerHTML = ten;
+        }
+
+        function startTimer(){
+            ten++
+            if(ten <= 9){
+                appten.innerHTML = "0"+ten;
+            }
+            if(ten > 9){
+                appten.innerHTML = ten;
+            }
+            if(ten >= 99){
+                sec++
+                if(sec <=9 ){
+                    appSec.innerHTML = "0"+sec;    
+                }
+                if(sec > 9){
+                    appSec.innerHTML = sec;
+                }
+                ten = 0;
+                appten.innerHTML = ten;
+                if(sec >= 60){
+                    min++
+                    if(min <= 9){
+                        appMin.innerHTML = "0" + min;
+                    }
+                    if(min > 9){
+                        appMin.innerHTML = min;
+                    }
+                    sec = 0;
+                    appSec.innerHTML = sec;
+                }
+            }
+        }
+    }
+    </script>
+    </body>
+</html>     

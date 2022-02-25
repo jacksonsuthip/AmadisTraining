@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Student Registration</title>
+    </head>
+    <body>
+        <h2>Registration Form</h2>
+        <form>
+            <div>Student Name : <input type="text" name="sName" id="sNAme"/></div>
+            <div>Father's Name : <input type="text" name="fName" id="fName"/></div>
+            <div>Class : 
+                <select name="class" id="class">
+                    <option >1 st</option>
+                    <option >2 st</option>
+                    <option >3 st</option>
+                    <option >4 st</option>
+                    <option >5 st</option>
+                    <option >6 st</option>
+                    <option >7 st</option>
+                    <option >8 st</option>
+                    <option >9 st</option>
+                    <option >10 st</option>
+                 </select>
+            </div>
+            <div>Age : <input type="number" min="0" max= "30"/></div>
+            <div>Gender : 
+                <input type="radio" name="genType" id="genTypeM" />
+                <label for="genTypeM">Male</label>
+                <input type="radio" name="genType" id="genTypeF" />
+                <label for="genTypeF">Female</label>
+                <input type="radio" name="genType" id="genTypeO" />
+                <label for="genTypeO">Other</label>
+            </div>
+            <div>Address : <textarea cols="50" rows="2" name="address" id="address"></textarea></div>
+            <div>DOB : <input type="date" name="dob" id="dob" /></div>
+        </form> 
+        <button >Submit</button>
+    </body>
+</html>

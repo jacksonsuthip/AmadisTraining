@@ -1,0 +1,41 @@
+/* id selector */
+#spanEmail {
+    font-weight: bold;
+}
+/* tag/element selector */
+span {
+    font-weight: bold;
+}
+
+/* selects multiple elements */
+span, label {
+    font-style: italic;
+}
+
+/* selct by classname */
+.field-label {
+    color: green;
+    text-transform: lowercase;
+}
+
+/* select based on attributes */
+input[type="text"], input[type="email"], textarea {
+    color: rgb(255, 0 , 0);
+    background-color: yellow;
+}
+
+/* nested selectors */
+form div span {
+    color: black;
+}
+
+input[type="text"]:hover, input[type="email"]:hover, textarea:hover {
+    /* border-color: blue; */
+    border: 2px solid blue;
+}
+
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: 14px;
+}

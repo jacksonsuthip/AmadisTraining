@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Registration</title>
+        <style>
+            body{
+                background-color: #e5a8e7;
+            }
+            header {
+                text-align: center;
+                background-color: #e71def;
+                color: #ffffff;
+                padding: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+             div{
+                padding-left: 15%;
+                padding-bottom: 7px;
+                padding-top: 7px;
+            } 
+            input, .inclass{
+                background-color: white;
+                border-radius: 10px;
+                border-color: #001dff;
+                padding: 3px;
+            }
+            fieldset{
+                margin: 10px;
+                background-color: #aae58f;
+                width: 100%;
+                border-radius: 20px;
+                border: 3px solid;
+                border-color: black;
+            }
+            button{
+                color: white;
+                background-color: #f71ed3;
+                padding: 8px;
+                border: 2px solid #f71ed3;
+                text-align: center;
+                border-radius: 10px;
+                font-size: 15px;
+                transition: all 0.3s;
+                margin: 5px;
+                font-weight: bold;
+            }
+            span{
+                font-weight: bold;
+            }
+            .btn{
+                padding-left: 33%;
+            }
+            .btn1:hover{
+                border: 2px solid #f71ed3;
+                background-color: transparent;
+	            color: black;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            legend{
+                text-transform: uppercase;
+                font-weight: bold;
+                background-color: #6868d8;
+                color: white;
+                border-radius: 7px;
+                padding: 3px;
+            }
+            #sName{
+                text-transform: uppercase;
+            }
+            table{
+                border-collapse: collapse;
+                table-layout: fixed;
+            }
+            table th {
+                border: 1px solid white;
+                background-color: black;
+                color: white;
+                padding: 3px;
+            }
+            td{
+                border: 1px solid black;
+                word-wrap: break-word;
+            }
+            .left, .right{
+                float: left;
+                 /* left: 20px;
+                top: 75px;  */
+                width: 45%;
+            }
+            button:disabled{
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed !important;
+            display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Registration Form</header>
+        <div class="left" style="padding: 20px; width:528px; height:508px">
+        <form > 
+            <p></p>
+            <fieldset>
+            <legend>Student Registration</legend>
+            <div ><span>Student Name : </span><input type="text" name="sName" id="sName"/></div>
+            <div><span>Father's Name : </span><input type="text" name="fName" id="fName"/></div>
+            <div><span>Class :</span> 
+                <select class="inclass" name="class" id="class">
+                    <option value="">Select </option>
+                    <option value="1 st">1 st</option>
+                    <option value="2 nd">2 st</option>
+                    <option value="3 rd">3 st</option>
+                    <option value="4 th">4 st</option>
+                    <option value="5 th">5 st</option>
+                    <option value="6 th">6 st</option>
+                    <option value="7 th">7 st</option>
+                    <option value="8 th">8 st</option>
+                    <option value="9 th">9 st</option>
+                    <option value="10 th">10 st</option>
+                 </select>
+            </div>
+            <div><span>Age : </span><input type="number" min="0" max= "30" id="age"/></div>
+            <div><span>Gender : </span>
+                <input type="radio" name="genType" id="genTypeM" value="Male"/>
+                <label for="genTypeM">Male</label>
+                <input type="radio" name="genType" id="genTypeF" value="Female"/>
+                <label for="genTypeF">Female</label>
+                <input type="radio" name="genType" id="genTypeO" value="Other"/>
+                <label for="genTypeO">Other</label>
+            </div>
+            <div><span>Address : </span><textarea class="inclass" cols="50" rows="2" name="address" id="address"></textarea></div>
+            <div><span>DOB : </span><input type="date" name="dob" id="dob" /></div>
+            <p></p>
+            <div class="btn">
+                <button type="button" class="btn1" id="addBtn" onclick="addDetails();" >Add</button>
+                <button type="button" class="btn1" id="editBtn" onclick="editDetails()" >Update</button>
+                <button type="reset" class="btn1"  onclick="resetDet()">Reset</button>
+            </div>
+            <input type="hidden" id="rowNum" name="rowNum" value="" />
+        </fieldset>
+     </form> 
+    </div>
+    <div class="right" style="padding: 20px; margin: 10px; width:681px; height:86px">
+        <p></p>
+    <table  id="infoTable">
+         <thead>
+         	<tr>
+             <th style="width: 2px;">Name</th>
+             <th style="width: 10px;">Father's Name</th>
+             <th style="width: 6%;">Class</th>
+             <th style="width: 6%;">Age</th>
+             <th style="width: 8%;">Gender</th>
+             <th style="width: 13%;">Address</th>
+             <th style="width: 12%;">Date</th>
+             <th style="width: 22%;">Edit / Remove</th>
+			</tr>         
+         </thead>
+         <tbody id="tabDet"></tbody>
+    </table>
+    </div>
+    </body>
+<script>
+    resetDet();
+    function addDetails(){
+        var sname   = document.getElementById("sName").value
+        var fname   = document.getElementById("fName").value
+        var sclass  = document.getElementById("class").value
+        var age     = document.getElementById("age").value
+        var address = document.getElementById("address").value
+        var dob     = document.getElementById("dob").value
+        if (dob != "" ){
+            var dobN = dob.split("-");
+            var yy   = dobN[0];
+            var mm   = dobN[1];
+            var dd   = dobN[2];
+            dob      = dd+'-'+mm+'-'+yy
+        }
+        var gType = '';
+        if (document.getElementById('genTypeM').checked) {
+            gType = document.getElementById('genTypeM').value;
+        } else if (document.getElementById('genTypeF').checked) {
+            gType = document.getElementById('genTypeF').value;
+        } else {
+            gType = document.getElementById('genTypeO').value;
+        }
+        // Creating table
+        var tableDetails    = document.querySelector("#infoTable tbody");
+        var tabRow          = document.createElement("tr");
+        tabRow.setAttribute("id", "tabDet1");
+        // Create cells
+        var snameCell   = document.createElement("td");
+        var fnameCell   = document.createElement("td");
+        var sclassCell  = document.createElement("td");
+        var ageCell     = document.createElement("td");
+        var gTypeCell   = document.createElement("td");
+        var addressCell = document.createElement("td");
+        var dobCell     = document.createElement("td");
+        var actionCell  = document.createElement("td");
+        // Set cell values
+        snameCell.innerHTML     = sname;
+        fnameCell.innerHTML     = fname;
+        sclassCell.innerHTML    = sclass;
+        ageCell.innerHTML       = age;
+        gTypeCell.innerHTML     = gType;
+        addressCell.innerHTML   = address;
+        dobCell.innerHTML       = dob;
+
+        //Button
+        var editBtn = document.createElement("button");
+        var deleteBtn = document.createElement("button");
+        editBtn.setAttribute("type", "button");
+        deleteBtn.setAttribute("type", "button");
+
+        editBtn.innerHTML = "Edit";
+        var textNode = document.createTextNode("Delete");
+        deleteBtn.appendChild(textNode);
+        //add class name 
+        editBtn.classList.add("btn1");
+        deleteBtn.classList.add("btn1");
+        
+        actionCell.appendChild(editBtn);
+        actionCell.appendChild(deleteBtn);
+        
+        // append cells to row
+        tabRow.appendChild(snameCell);
+        tabRow.appendChild(fnameCell);
+        tabRow.appendChild(sclassCell);
+        tabRow.appendChild(ageCell);
+        tabRow.appendChild(gTypeCell);
+        tabRow.appendChild(addressCell);
+        tabRow.appendChild(dobCell);
+        tabRow.appendChild(actionCell);
+
+        tableDetails.appendChild(tabRow);
+        // Add event listener
+        editBtn.addEventListener("click", function(event) {
+            var clickedRow = event.target.parentNode.parentNode;
+            var i = event.target.parentNode.parentNode.rowIndex;
+            //console.log(i);
+            var sname1   = clickedRow.childNodes[0].innerHTML.trim();
+            var fname1   = clickedRow.childNodes[1].innerHTML.trim();
+            var sclass   = clickedRow.childNodes[2].innerHTML.trim();
+            var age1     = clickedRow.childNodes[3].innerHTML.trim();
+            var address1 = clickedRow.childNodes[5].innerHTML.trim();
+            var dob1     = clickedRow.childNodes[6].innerHTML.trim();
+                if (dob1 != null ){
+                    var dobN = dob.split("-");
+                    var yy   = dobN[0];
+                    var mm   = dobN[1];
+                    var dd   = dobN[2];
+                    dob1     = dd+'-'+mm+'-'+yy
+                }
+            var gType1   = clickedRow.childNodes[4].innerHTML.trim();
+                if (gType1 == 'Male') {
+                    document.getElementById('genTypeM').checked = true;
+                } else if (gType1 == 'Female') {
+                    document.getElementById('genTypeF').checked = true;
+                } else {
+                    document.getElementById('genTypeO').checked = true;
+                }
+
+            document.getElementById("sName").value  = sname1;
+            document.getElementById("fName").value  = fname1;
+            document.getElementById("class").value  = sclass;
+            document.getElementById("age").value    = age1;
+            document.getElementById("address").value= address1;
+            document.getElementById("dob").value    = dob1;
+            document.getElementById("rowNum").value = i;
+
+            //document.getElementById("btnUpdate").classList.remove("btn-hidden");
+            document.getElementById("addBtn").disabled = true;
+            document.getElementById("editBtn").disabled = false;
+        });
+        deleteBtn.addEventListener("click", function(event) {
+            console.log("delete is clicked");
+            var deleteBtn = event.target;
+            deleteBtn.parentNode.parentNode.remove();
+        });
+
+    }
+
+
+    function editDetails(){
+        var i   = document.getElementById("rowNum").value
+        i = i - 1;
+        console.log(i);
+        var sname   = document.getElementById("sName").value
+        var fname   = document.getElementById("fName").value
+        var sclass  = document.getElementById("class").value
+        var age     = document.getElementById("age").value
+        var address = document.getElementById("address").value
+        var dob     = document.getElementById("dob").value
+        if (dob != "" ){
+            var dobN = dob.split("-");
+            var yy   = dobN[0];
+            var mm   = dobN[1];
+            var dd   = dobN[2];
+            dob      = dd+'-'+mm+'-'+yy
+        }
+        var gType = '';
+        if (document.getElementById('genTypeM').checked) {
+            gType = document.getElementById('genTypeM').value;
+        } else if (document.getElementById('genTypeF').checked) {
+            gType = document.getElementById('genTypeF').value;
+        } else {
+            gType = document.getElementById('genTypeO').value;
+        }
+        
+        var item    = document.getElementById("tabDet").childNodes[i];
+
+        item.childNodes[0].innerHTML = sname;
+        item.childNodes[1].innerHTML = fname;
+        item.childNodes[2].innerHTML = sclass;
+        item.childNodes[3].innerHTML = age;
+        item.childNodes[4].innerHTML = gType;
+        item.childNodes[5].innerHTML = address;
+        item.childNodes[6].innerHTML = dob;
+    }
+
+    function resetDet(){
+        document.getElementById("addBtn").disabled = false;
+        document.getElementById("editBtn").disabled = true;
+    }
+
+</script>
+</html>     

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM interaction</title>
+    <style>
+        form .form-row {
+            margin-bottom: 8px;
+        }
+
+        form div.label {
+            font-weight: bold;
+        }
+
+        .left-panel, .right-panel {
+            float: left;
+            width: 49%;
+            border: 1px solid #CCC;
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid #CCC;
+        }
+        button.edit-btn {
+            margin-right: 10px;
+        }
+
+        button.btn-hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>DOM Interaction</h2>
+    <div style="padding: 20px;">
+        <div>
+            <input type="text" id="txtInput" readonly>
+        </div>
+        <div style="padding: 10px;">
+            <button type="button" onclick="captureInput(1);">1</button>
+            <button type="button" onclick="captureInput(2);">2</button>
+            <button type="button" onclick="captureInput('+');">+</button>
+            <button type="button" onclick="showResult();">=</button>
+        </div>
+       
+        <div>
+            <input type="text" id="txtOutput">
+        </div>
+        
+    </div>
+    <div class="left-panel">
+        <form action="">
+            <div class="form-row">
+                <div class="label">Name:</div>
+                <div class="field">
+                    <input type="text" id="txtName" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="label">Email:</div>
+                <div class="field">
+                    <input type="text" id="txtEmail" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="label">City:</div>
+                <div class="field">
+                    <select name="" id="ddlCity">
+                        <option value=""></option>
+                        <option value="Chn">Chennai</option>
+                        <option value="Hyd">Hyderabad</option>
+                        <option value="Mum">Mumbai</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="button" onclick="addUserDetails();">Add</button>
+                <button type="button" class="btn-update btn-hidden" id="btnUpdate" onclick="updateDetails();">Update</button>
+                <button type="reset">Reset</button>
+            </div>
+            <input type="hidden" id="rowNum" name="rowNum" value="" />
+        </form>
+    </div>
+
+    <div class="right-panel">
+        <table id="tblUserList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tabDet">
+               
+            </tbody>
+        </table>
+    </div>
+
+   
+    
+
+</body>
+
+<script>
+    function addUserDetails() {
+        console.log("add function called");
+        var name = document.getElementById("txtName").value;
+        var email = document.getElementById("txtEmail").value;
+        var city = document.getElementById("ddlCity").value;
+        console.log("details: ", name, email, city);
+
+        // var newRow = `<tr>
+        //                 <td>${name}</td>
+        //                 <td>${email}</td>
+        //                 <td>${city}</td>
+        //                 <td>
+        //                     <button type="button">Edit</button>
+        //                     <button type="button">Delete</button>
+        //                 </td>
+        //             </tr>`;
+        // document.getElementById("tblUserListBody").innerHTML += newRow;
+
+        var tableBody = document.querySelector("#tblUserList tbody");
+        var newRow = document.createElement("tr");
+
+        // Create cells
+        var nameCell = document.createElement("td");
+        var emailCell = document.createElement("td");
+        var cityCell = document.createElement("td");
+        var actionCell = document.createElement("td");
+        
+        // Set cell values
+        nameCell.innerHTML = name;
+        emailCell.innerHTML = email;
+        cityCell.innerHTML = city;
+
+        var editBtn = document.createElement("button");
+        var deleteBtn = document.createElement("button");
+        editBtn.setAttribute("type", "button");
+        deleteBtn.setAttribute("type", "button");
+
+        editBtn.innerHTML = "Edit";
+        var textNode = document.createTextNode("Delete");
+        deleteBtn.appendChild(textNode);
+        editBtn.classList.add("edit-btn");
+
+        actionCell.appendChild(editBtn);
+        actionCell.appendChild(deleteBtn);
+        
+        // append cells to row
+        newRow.appendChild(nameCell);
+        newRow.appendChild(emailCell);
+        newRow.appendChild(cityCell);
+        newRow.appendChild(actionCell);
+
+        tableBody.appendChild(newRow);
+
+
+        // Add event listener
+        editBtn.addEventListener("click", function(event) {
+            var clickedRow = event.target.parentNode.parentNode;
+            var i = event.target.parentNode.parentNode.rowIndex;
+            var name = clickedRow.childNodes[0].innerHTML;
+            var email = clickedRow.childNodes[1].innerHTML;
+            var city = clickedRow.childNodes[2].innerHTML;
+
+
+            document.getElementById("txtName").value = name;
+            document.getElementById("txtEmail").value = email;
+            document.getElementById("ddlCity").value = city;
+            document.getElementById("rowNum").value = i;
+
+            document.getElementById("btnUpdate").classList.remove("btn-hidden");
+        });
+        deleteBtn.addEventListener("click", function(event) {
+            console.log("delete is clicked");
+            var deleteBtn = event.target;
+            deleteBtn.parentNode.parentNode.remove();
+        });
+    }
+
+    var inputExpr = "";
+    function captureInput(val) {
+        inputExpr += val; // 1+21
+        document.getElementById("txtInput").value = inputExpr;
+    }
+
+    function showResult() {
+        var result = eval(inputExpr);
+        document.getElementById("txtOutput").value = result;
+    }
+
+    function nameChanged() {
+        console.log("change event for name called");
+    }
+
+
+    // Adding events using JS
+    var nameTextBox = document.getElementById("txtName");
+    nameTextBox.addEventListener("blur", function() {
+        console.log("blur event fired");
+    });
+
+    /////////////// Edit Function
+    function updateDetails(){
+        var i   = document.getElementById("rowNum").value
+        var name = document.getElementById("txtName").value;
+        var email = document.getElementById("txtEmail").value;
+        var city = document.getElementById("ddlCity").value;
+        var item    = document.getElementById("tabDet").childNodes[i];
+        
+        item.childNodes[0].innerHTML = name;
+        item.childNodes[1].innerHTML = email;
+        item.childNodes[2].innerHTML = city;
+    }
+</script>
+
+</html>

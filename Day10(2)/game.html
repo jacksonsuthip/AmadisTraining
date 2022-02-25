@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME</title>
+    <style>
+        header {
+            padding: 45px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-image: linear-gradient(to right,red, #f900f2, #04dcff);
+            position: fixed; 
+            color: white;
+            text-align: center;
+            right: 0px;
+            left:0px;
+        }
+        body{
+            /* justify-content: center; */
+            display: flex; 
+            flex-direction: column;
+            margin-left: 37%;
+            margin-top: 0px;
+            background-color: #e2ff94;
+        }
+        .gameDiv {
+            /* margin-top: 13%; */
+            display: grid;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: 100px 100px 100px;
+        }
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .radioBtn {
+            margin-top: 15%;
+        }
+        button{
+            color: white;
+            background-color: #f71ed3;
+            padding: 8px;
+            border: 2px solid #f71ed3;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            margin-left: 12%;
+            font-weight: bold;
+        }
+        .btn:hover{
+            border: 2px solid #f71ed3;
+            background-color: transparent;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header><div><span>Game Tic-Tac-Toe</span></div></header>
+    <div class="radioBtn" style="padding-left: 12%;">
+        <input type="radio" name="typeXO" id="typeX" value="X" checked />
+        <label for="typeX" style="color: red;"><b>X</b></label>
+        <input type="radio" name="typeXO" id="typeO" value="O" />
+        <label for="typeO" style="color: blue;"><b>O</b></label>
+    </div>
+    <p></p>
+    <div class="gameDiv">
+        <div class="box" onclick="xoV(1);xoC();" style="border-right: 4px solid #1eff00; border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo1"></span></div>
+        <div class="box" onclick="xoV(2);xoC();" style="border-right: 4px solid #1eff00; border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo2"></span></div>
+        <div class="box" onclick="xoV(3);xoC();" style="border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo3"></span></div>
+        <div class="box" onclick="xoV(4);xoC();" style="border-right: 4px solid #1eff00; border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo4"></span></div>
+        <div class="box" onclick="xoV(5);xoC();" style="border-right: 4px solid #1eff00; border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo5"></span></div>
+        <div class="box" onclick="xoV(6);xoC();" style="border-bottom: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo6"></span></div>
+        <div class="box" onclick="xoV(7);xoC();" style="border-right: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo7"></span></div>
+        <div class="box" onclick="xoV(8);xoC();" style="border-right: 4px solid #1eff00; font-size: 60px;">
+            <span id="xo8"></span></div>
+        <div class="box" onclick="xoV(9);xoC();" style="font-size: 60px;">
+            <span id="xo9"></span></div>
+      </div>
+      <p></p>
+      <div>
+          <button id="resetBtn" class="btn">New Game</button>
+      </div>
+      <p></p>
+      <div><span style="font-size: 40px; padding-left: 7%;" id="res"></span></div>
+    <script>
+        function xoV(str){
+            var check  = document.getElementById("xo"+str).innerHTML;
+            if(check == ''){
+                var val    = '';
+                var colorN = '';
+                var typeXO = '';
+                if (document.getElementById('typeX').checked) {
+                    typeXO = document.getElementById('typeX').value;
+                } else {
+                    typeXO = document.getElementById('typeO').value;
+                }
+                if(typeXO == "X"){ val = "X"; colorN = "red"; document.getElementById('typeO').checked = true;}
+                if(typeXO == "O"){ val = "O"; colorN = "blue"; document.getElementById('typeX').checked = true;}
+                    
+                    if(str == 1){
+                        document.getElementById("xo1").innerHTML    = val;
+                        document.getElementById("xo1").style.color  = colorN;
+                    }    
+                    if(str == 2){
+                        document.getElementById("xo2").innerHTML    = val;
+                        document.getElementById("xo2").style.color  = colorN;
+                    }
+                    if(str == 3){
+                        document.getElementById("xo3").innerHTML    = val;
+                        document.getElementById("xo3").style.color  = colorN;
+                    }
+                    if(str == 4){
+                        document.getElementById("xo4").innerHTML    = val;
+                        document.getElementById("xo4").style.color  = colorN;
+                    }
+                    if(str == 5){
+                        document.getElementById("xo5").innerHTML    = val;
+                        document.getElementById("xo5").style.color  = colorN;
+                    }
+                    if(str == 6){
+                        document.getElementById("xo6").innerHTML    = val;
+                        document.getElementById("xo6").style.color  = colorN;
+                    }
+                    if(str == 7){
+                        document.getElementById("xo7").innerHTML    = val;
+                        document.getElementById("xo7").style.color  = colorN;
+                    }
+                    if(str == 8){
+                        document.getElementById("xo8").innerHTML    = val;
+                        document.getElementById("xo8").style.color  = colorN;
+                    }
+                    if(str == 9){
+                        document.getElementById("xo9").innerHTML    = val;
+                        document.getElementById("xo9").style.color  = colorN;
+                    }
+            }
+            /// reset function
+            var resetBtn = document.getElementById("resetBtn");
+            resetBtn.onclick = function(){
+                for(var i=1; i<10; i++){
+                document.getElementById("xo"+[i]).innerHTML = '';
+                }
+                document.getElementById("res").innerHTML = '';
+            }//reset end..
+        }
+      
+        function xoC(){
+            var xo1 = document.getElementById("xo1").innerHTML;
+            var xo2 = document.getElementById("xo2").innerHTML;
+            var xo3 = document.getElementById("xo3").innerHTML;
+            var xo4 = document.getElementById("xo4").innerHTML;
+            var xo5 = document.getElementById("xo5").innerHTML;
+            var xo6 = document.getElementById("xo6").innerHTML;
+            var xo7 = document.getElementById("xo7").innerHTML;
+            var xo8 = document.getElementById("xo8").innerHTML;
+            var xo9 = document.getElementById("xo9").innerHTML;
+
+            if((xo1 == "X" && xo2 == "X" && xo3 == "X") ||
+                (xo4 == "X" && xo5 == "X" && xo6 == "X") ||
+                (xo7 == "X" && xo8 == "X" && xo9 == "X") ||
+                (xo1 == "X" && xo4 == "X" && xo7 == "X") ||
+                (xo2 == "X" && xo5 == "X" && xo8 == "X") ||
+                (xo3 == "X" && xo6 == "X" && xo9 == "X") ||
+                (xo1 == "X" && xo5 == "X" && xo9 == "X") ||
+                (xo3 == "X" && xo5 == "X" && xo7 == "X") ){
+                    document.getElementById("res").innerHTML = 'Player X Won';
+                    document.getElementById("res").style.color  = "red";
+            } else if ((xo1 == "O" && xo2 == "O" && xo3 == "O") ||
+                (xo4 == "O" && xo5 == "O" && xo6 == "O") ||
+                (xo7 == "O" && xo8 == "O" && xo9 == "O") ||
+                (xo1 == "O" && xo4 == "O" && xo7 == "O") ||
+                (xo2 == "O" && xo5 == "O" && xo8 == "O") ||
+                (xo3 == "O" && xo6 == "O" && xo9 == "O") ||
+                (xo1 == "O" && xo5 == "O" && xo9 == "O") ||
+                (xo3 == "O" && xo5 == "O" && xo7 == "O") ){
+                    document.getElementById("res").innerHTML = 'Player O Won';
+                    document.getElementById("res").style.color  = "blue";
+            }else if (xo1 != "" && xo2 != "" && xo3 != "" && xo4 != "" && xo5 != "" && xo6 != "" && xo7 != "" && xo8 != "" && xo9 != ""  ){
+                    document.getElementById("res").innerHTML = 'X & O Draw!';
+                    document.getElementById("res").style.color  = "Green";
+            }else{
+                document.getElementById("res").innerHTML = '';
+            }
+        }    
+    </script>
+</body>
+</html>
