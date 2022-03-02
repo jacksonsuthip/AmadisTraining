@@ -1,3 +1,0 @@
-function clcickFun() {  
-    alert("Hellow"); 
-}
