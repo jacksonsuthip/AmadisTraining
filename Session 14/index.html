@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anto Jackson</title>
+    <link rel="icon" href="img/aj.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+</head>
+  <body>
+    <div class="up"><a href="#top"><img src="img/up.gif" class="imgGif"></a></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+          <span style="color: white; font-size: 1.6rem;">Anto Jackson Suthip</span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ulDiv" id="navbarResponsive">
+              <ul class="navbar-nav">
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#section1">Portfolio</a></li>
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#section2">About</a></li>
+                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#section3">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+    <div class="" id="top">
+      <div id="section1" class="row" >
+        <div class="col-md-2 "></div>
+        <div class="col-md-4 ">
+          <div class="S1div">
+            <h2 style="padding: 10px;">About Me</h2>
+            <p>To work in a challenging environment demanding all my skills and efforts to explore
+              and adapt myself in different fields, and realize my potential and contribute to the
+              development of organization with impressive performance.</p>
+          </div>
+        </div>
+        <div class="col-md-5"><img src="img/boy.png" class="img-fluid"></div>
+      </div>
+    </div>  
+    <!-- iconimg -->
+    <div id="section2" class="Sdiv container">
+      <h2 align="center">My Top Skills</h2>
+      <div class="row justify-content-center">
+          <div class="col-md-2  S2div" data-bs-toggle="modal" data-bs-target="#htmlModal">
+            <img src="img/html.png" class="img-thumbnail" >
+          </div>      
+          <div class="col-md-2  S2div" data-bs-toggle="modal" data-bs-target="#cssModal">
+            <img src="img/css.png" class="img-thumbnail">
+          </div>
+          <div class="col-md-2  S2div" data-bs-toggle="modal" data-bs-target="#jsModal">
+            <img src="img/js.png" class="img-thumbnail">
+          </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-2 S2div" data-bs-toggle="modal" data-bs-target="#bsModal">
+          <img src="img/bs.png" class="img-thumbnail">
+        </div>      
+        <div class="col-md-2 S2div" data-bs-toggle="modal" data-bs-target="#reactModal">
+          <img src="img/react.png" class="img-thumbnail">
+        </div>
+        <div class="col-md-2 S2div" data-bs-toggle="modal" data-bs-target="#nodeModal">
+          <img src="img/node.png" class="img-thumbnail">
+        </div>
+      </div>
+    </div>
+    <!-- form -->
+    <div class="container" id="section3">
+      <fieldset >
+        <legend>Get In Touch With Me</legend>
+        <div class="row">
+          <div class="col-md-12"><span>Name</span></div>
+          <div class="col-md-12"><input type="text" class="form-control" placeholder="Enter Name" id="name" /></div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class="col-md-12"><span>Email</span></div>
+          <div class="col-md-12"><input type="text" class="form-control" placeholder="Enter Email" id="email"/></div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class="col-md-12"><span>Message</span></div>
+          <div class="col-md-12"><textarea style="height: 175px;" class="form-control" placeholder="Enter Message . . . " id="message"></textarea></div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-2"><button type="button" class="btn btn1" onclick="addDetail();">Submit</button></div>
+          <div class="col-md-2"><button type="button" class="btn btn1" data-bs-toggle="modal" data-bs-target="#detailModal" id="view" disabled>View</button></div>
+        </div>
+      </fieldset>
+    </div>
+    <p></p>
+    <!-- footer -->
+    <footer class="page-footer font-small blue pt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-4">
+            <a href="https://twitter.com/" target="_blank"><img src="img/twitter.gif" class="imgGif"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="img/instagram.gif" class="imgGif"></a>
+            <a href="https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo" target="_blank"><img src="img/linkedin.gif" class="imgGif"></a>
+            <a href="https://github.com/" target="_blank"><img src="img/github.gif" class="imgGif"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+     <!-- Button trigger modal -->
+      <!-- <button type="button" class="btn btn1" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+        Launch demo modal
+      </button> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="htmlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">HTML</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"><img src="img/html.png" class="img-thumbnail" ></div>
+              </div>
+              <p>The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.
+                 It can be assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="cssModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">CSS</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"><img src="img/css.png" class="img-thumbnail" ></div>
+              </div>
+              <p>Cascading Style Sheets is a style sheet language used for describing the presentation of a document 
+                written in a markup language such as HTML.
+                 CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="jsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">JavaScript</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"><img src="img/js.png" class="img-thumbnail" ></div>
+              </div>
+              <p>JavaScript, often abbreviated JS, is a programming language that is one of the core technologies of the World Wide Web, 
+                alongside HTML and CSS.
+                 Over 97% of websites use JavaScript on the client side for web page behavior, often incorporating third-party libraries. </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="bsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Bootstrap</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"><img src="img/bs.png" class="img-thumbnail" ></div>
+              </div>
+              <p>Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains HTML, 
+                CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="reactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">React JS</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4 col-sm-10" ></div>
+                <div class="col-md-3"><img src="img/react.png" class="img-thumbnail" ></div>
+              </div>
+              <p>React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+                 It is maintained by Meta and a community of individual developers and companies.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="nodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">node JS</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"><img src="img/node.png" class="img-thumbnail" ></div>
+              </div>
+              <p>Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs 
+                on the V8 engine and executes JavaScript code outside a web browser.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Information</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" >
+                <div id="infoDetail"></div>
+            </div>  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+<script>
+  function addDetail(){
+    var name    = document.getElementById("name").value;
+    var email   = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+
+      if(name == ''){
+          alert("Enter Name And Continue");
+          document.getElementById("name").focus();
+      } else if(email == ''){
+          alert("Enter Email And Continue");
+          document.getElementById("email").focus();
+      } else {
+          var detail = `<div class='row'><div class='col-md-2'></div><div class='col-md-3' ><span>Name</span></div><div class='col-md-6'> ${name} </div></div>
+                    <div class='row'><div class='col-md-2'></div><div class='col-md-3'><span>Email</span></div><div class='col-md-6'> ${email} </div></div>
+                    <div class='row'><div class='col-md-2'></div><div class='col-md-3'><span>Message</span></div><div class='col-md-6'> ${message} </div></div>`;
+          document.getElementById("infoDetail").innerHTML = detail;
+          document.getElementById("view").disabled = false;
+      }
+  }
+</script>
+</html>
