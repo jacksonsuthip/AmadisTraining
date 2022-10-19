@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>static</title>
+  </head>
+
+  <body>
+    <h1>Open console in Browser -- Static</h1>
+    <script>
+      class System {
+        constructor(brand, rate) {
+          this.Name = brand;
+          this.Rate = rate;
+        }
+        getCurrentDateFunction() {
+          let date = new Date();
+          return date.getFullYear();
+        }
+        // static method
+        static getStrinFun(str) {
+          return "str value -- " + str;
+        }
+      }
+
+      myPc1 = new System("HP", 55);
+      myPc2 = new System("Dell", 78);
+
+      console.log("Date : ", myPc1.getCurrentDateFunction());
+      // can access directly class name (System)
+      console.log(System.getStrinFun("Hiiii"));
+    </script>
+  </body>
+</html>

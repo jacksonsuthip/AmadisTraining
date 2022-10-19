@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>class</title>
+  </head>
+
+  <body>
+    <h1>Open console in Browser -- Class</h1>
+    <script>
+      const Home = {
+        name: "anto",
+        phno: 10,
+        year: 2021,
+        fn: function (num) {
+          return "name -- " + (this.phno + num);
+        },
+      };
+      console.log(Home.name);
+      console.log(Home.fn(25));
+
+      // Constructor
+      class System {
+        constructor(brand, rate) {
+          this.Name = brand;
+          this.Rate = rate;
+        }
+        // function
+        getCurrentDateFunction() {
+          let date = new Date();
+          return date.getFullYear();
+        }
+      }
+      myPc1 = new System("HP", 55);
+      myPc2 = new System("Dell", 78);
+      console.log("Name - " + myPc1.Name + "\nRate : " + myPc1.Rate);
+
+      console.log("Date : ", myPc1.getCurrentDateFunction());
+    </script>
+  </body>
+</html>

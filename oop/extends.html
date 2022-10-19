@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>extends</title>
+  </head>
+
+  <body>
+    <h1>Open console in Browser -- Extendes</h1>
+    <script>
+      class System {
+        constructor(brand, rate) {
+          this.Name = brand;
+          this.Rate = rate;
+        }
+        getCurrentDateFunction() {
+          let date = new Date();
+          return date.getFullYear();
+        }
+      }
+      // extends
+      class Device extends System {
+        constructor(brand, rate, year) {
+          super(brand, rate);
+          this.Year = year;
+        }
+        getYearFunction(num) {
+          const date = this.getCurrentDateFunction();
+          let value = date - num;
+          return value;
+        }
+      }
+
+      myPc1 = new System("HP", 55);
+      myPc2 = new System("Dell", 78);
+
+      myPc3 = new Device("LENOVO", 45, 2022);
+      console.log(
+        " Name p1 : " +
+          myPc1.Name +
+          "\n Rate p2 : " +
+          myPc2.Rate +
+          "\n Year p3 : " +
+          myPc3.Year
+      );
+      console.log("p3 -- ", myPc3.Name);
+      console.log("getYearFunction fn -- ", myPc3.getYearFunction(5));
+    </script>
+  </body>
+</html>
